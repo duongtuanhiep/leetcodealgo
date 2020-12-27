@@ -4,8 +4,8 @@ package greedy
 
 /* Naive implementation:
 - Run through the array , get 2 largest elem,
-- Swap those to the end of array, do cal
-- if res > 0 , trim 1 else if res = 0 trim 2
+- Swap those to the end of array and trim off those 2 element
+- Added in result of max - secondMax if > 0
 - continue until array has len == 1
 
 */
