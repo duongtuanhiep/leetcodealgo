@@ -1,25 +1,45 @@
 package greedy
 
+/*
+Question 122: https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/
+
+Greedy approach:
+
+**/
+
+/*
+Window Sliding/2 pointers
+
+**/
+
+// func maxProfit(prices []int) int {
+// 	var maxSum int
+// 	if len(prices) == 0 {
+// 		return 0
+// 	}
+// 	for i, j := 0, 0; i < len(prices) && j < len(prices); j++ {
+// 		if prices[j]-prices[i] > 0 {
+// 			maxSum += prices[j] - prices[i]
+// 			i = j
+// 			continue
+// 		}
+// 		if prices[j] < prices[i] {
+// 			i = j
+// 		}
+// 	}
+// 	return maxSum
+// }
+
 func maxProfit(prices []int) int {
-	var result, localMin, localMax int
-	result = 0
-	lenArr := len(prices)
-	if len(prices) <= 1 {
+	if len(prices) < 2 {
 		return 0
 	}
-	localMin = prices[0]
-	localMax = prices[0]
-	for i := 1; i < lenArr; i++ {
-		if localMax < prices[i] {
-			localMax = prices[i]
-		} else if localMax > prices[i] {
-			result = result + localMax - localMin
-			localMin = prices[i]
-			localMax = prices[i]
+	maxSum, buy := 0, prices[0]
+	for _, sell := range prices[1:] {
+		if sell > buy {
+			maxSum += sell - buy
 		}
-		if i == lenArr-1 {
-			return result + localMax - localMin
-		}
+		buy = sell
 	}
-	return result
+	return maxSum
 }
