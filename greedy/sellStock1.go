@@ -55,15 +55,13 @@ func maxProfit(prices []int) int {
 	return maxVal
 }
 
-/* Approach 3: Greedy ?
+/* Approach 3: Sliding windows
 One thing we can try to do is to :
-- Get LocalMin, LocalMax index i,j then LocalTxn = LocalMax - LocalMin
-- We "close" the loop when we can find new LocalMin, Update on when finding localMax.
+Get LocalMin, LocalMax index i,j then LocalTxn = LocalMax - LocalMin
+We drops the localMin when we can find a smaller value than previous
+localMin, update LocalTxn when there is a new localMax thats greater
+than the previous localMax.
 
-Reasoning: LocalTxn will be the "highest" possible UP UNTIL THAT POINT.
-On the case that some new Max Txn can be found, meaning that there is a index i that
-is arr[j] - arr[i] even smaller than the initial which contradict the criteria we use
-to "close" that part.
 **/
 // Runtime: O(N), Space O(1)
 func maxProfit(prices []int) int {
