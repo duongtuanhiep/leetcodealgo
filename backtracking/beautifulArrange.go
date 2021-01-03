@@ -37,7 +37,7 @@ Idea: DFS/Backtracking using stack
 
 // a more elegant way with recursion and no array created. Translated from solution.
 func countArrangement(n int) int {
-	visited := make([]bool, n+2)
+	visited := make([]bool, n+1)
 	return count(n, 1, 0, visited)
 }
 
