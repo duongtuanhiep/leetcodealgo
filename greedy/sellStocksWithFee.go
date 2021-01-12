@@ -13,19 +13,19 @@ perform a transaction. Improved from sellStock 2
 **/
 
 func maxProfit(prices []int, fee int) int {
-	var maxProfit, curBuy, curProfit int
+	var maxProfit, buy, curProfit int
 	if len(prices) < 2 {
 		return 0
 	}
-	curBuy = prices[0]
-	for i := 0; i < len(prices); i++ {
-		if prices[i] <= curBuy+curProfit {
+	buy = prices[0]
+	for _, sell := range prices[1:] {
+		if sell <= buy+curProfit {
 			maxProfit += curProfit
-			curBuy, curProfit = prices[i], 0
-		} else if prices[i]-curBuy-fee > curProfit {
-			curProfit = prices[i] - curBuy - fee
+			buy, curProfit = sell, 0
+		} else if sell-buy-fee > curProfit {
+			curProfit = sell - buy - fee
 		}
-		if i == len(prices)-1 && curProfit > 0 {
+		if sell == prices[len(prices)-1] {
 			maxProfit += curProfit
 		}
 
