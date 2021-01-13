@@ -49,3 +49,6 @@ func numRescueBoats(people []int, limit int) int {
 	}
 	return result
 }
+
+// Improvement: Bucket sort since individual can always be carried by a boat
+// https://leetcode.com/problems/boats-to-save-people/discuss/197063/easy-thought-process-to-improve-from-O(nlogn)-to-O(n)
