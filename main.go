@@ -1,59 +1,35 @@
 package main
 
-func main() {}
-func numIslands(grid [][]byte) int {
+import "fmt"
 
-	isCheck := make(map[Loc]int)
-	queue := []Loc{}
-	counter := 0
+func main() {
+	fmt.Println(countArrangement(2))
+}
 
-	for i := range grid {
-		for j, val := range grid[i] {
-			if val == byte(1) && isCheck[Loc{X: i, Y: j}] == 0 {
-				counter++
-				queue = append(queue, Loc{X: i, Y: j})
-				for len(queue) > 0 {
-					u := queue[0].X
-					v := queue[0].Y
-					isCheck[Loc{X: u, Y: v}] = 1
-					if u-1 >= 0 {
-						if isCheck[Loc{X: u - 1, Y: v}] == 0 {
-							if grid[u-1][v] == byte(1) {
-								queue = append(queue, Loc{X: u - 1, Y: v})
-							}
-						}
-					}
-					if v-1 >= 0 {
-						if isCheck[Loc{X: u, Y: v - 1}] == 0 {
-							if (grid[u][v-1]) == byte(1) {
-								queue = append(queue, Loc{X: u, Y: v - 1})
-							}
-						}
-					}
-					if u+1 <= len(grid)-1 {
-						if isCheck[Loc{X: u + 1, Y: v}] == 0 {
-							if (grid[u+1][v]) == byte(1) {
-								queue = append(queue, Loc{X: u + 1, Y: v})
-							}
-						}
-					}
-					if v+1 <= len(grid[u])-1 {
-						if isCheck[Loc{X: u, Y: v + 1}] == 0 {
-							if (grid[u][v+1]) == byte(1) {
-								queue = append(queue, Loc{X: u, Y: v + 1})
-							}
-						}
-					}
-					queue = queue[1:]
-				}
+func countArrangement(n int) int {
+	counter, arrStack, curArr := 0, [][]int{}, []int{}
+	arrStack = append(arrStack, curArr)
+	for len(arrStack) != 0 {
+		curArr, arrStack = arrStack[len(arrStack)-1], arrStack[:len(arrStack)-1]
+
+		if len(curArr) == n {
+			counter++
+			continue
+		}
+
+		curArrMap := make(map[int]bool)
+		for _, val := range curArr {
+			curArrMap[val] = true
+		}
+
+		for i := 1; i <= n; i++ {
+			if !curArrMap[i] && (i%(len(curArr)+1) == 0 || (len(curArr)+1)%i == 0) {
+				newArr := make([]int, len(curArr)+1)
+				copy(newArr, curArr)
+				newArr[len(newArr)-1] = i
+				arrStack = append(arrStack, newArr)
 			}
 		}
 	}
-
 	return counter
-}
-
-type Loc struct {
-	X int
-	Y int
 }
