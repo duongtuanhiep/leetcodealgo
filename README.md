@@ -9,5 +9,5 @@ I categorizes all the questions I solve based on languages I used (wether is Gol
 # A common structure of each files
 On top of the file, beside the common overhead specifics to languages, you will see a comments section that note down the question number (on leetcode), the link to the online version of the question and my concept, ideas for solving the question. Bellow that is the most optimized version I can think of in the time I solve the question. 
 
-An example: 
+## Example: 
 ![image](https://user-images.githubusercontent.com/48057648/114767803-c3189c00-9d70-11eb-8e2a-015bc0e6fcf8.png)
