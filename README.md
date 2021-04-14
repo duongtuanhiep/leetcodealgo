@@ -1,4 +1,4 @@
- [![Go Report Card](https://goreportcard.com/badge/github.com/duongtuanhiep/leetcodealgo)](https://goreportcard.com/report/github.com/duongtuanhiep/leetcodealgo)
+[![Go Report Card](https://goreportcard.com/badge/github.com/duongtuanhiep/leetcodealgo)](https://goreportcard.com/report/github.com/duongtuanhiep/leetcodealgo)
 # Introduction
 Leetcode.com is a website where people–mostly software engineers–practice their coding skills. There are 1800+ questions (and growing), each with multiple solutions. Questions are ranked by level of difficulty: easy, medium, and hard. 
 
