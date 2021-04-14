@@ -1,4 +1,5 @@
-# Introduction  [![Go Report Card](https://goreportcard.com/badge/github.com/duongtuanhiep/leetcodealgo)](https://goreportcard.com/report/github.com/duongtuanhiep/leetcodealgo)
+ [![Go Report Card](https://goreportcard.com/badge/github.com/duongtuanhiep/leetcodealgo)](https://goreportcard.com/report/github.com/duongtuanhiep/leetcodealgo)
+# Introduction
 Leetcode.com is a website where people–mostly software engineers–practice their coding skills. There are 1800+ questions (and growing), each with multiple solutions. Questions are ranked by level of difficulty: easy, medium, and hard. 
 
 I am trying to do some competetive programming during my freetime and I also love solving coding question and I find one of the best way to practice is to solve problems on Leetcode. On my free time, I usually try to solve 1 or 2 questions. What I do is try to exaustively find all the possible solution I can come up with within a reasonable amount of time (unless the question really bugs me). 
