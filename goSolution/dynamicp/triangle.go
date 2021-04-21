@@ -4,9 +4,11 @@ package dynamicp
 Question 120: https://leetcode.com/problems/triangle/
 
 Idea:
-- We can try to calculate what is the min value cost at position i from position i+1 in array triangle.
-
-
+We can try to calculate what is the min value cost at position i from position i+1 in array triangle.
+Recursion:
+S[i] = MIN(S[i+1][j+1], S[i+1][j])
+- i current step
+- j index at step i+1
 */
 
 func minimumTotal(triangle [][]int) int {
