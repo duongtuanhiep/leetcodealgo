@@ -28,6 +28,7 @@ func main() {
 		// base
 		if n == 1 && m == 1 && k != 0 {
 			printf("NO\n")
+			continue
 		}
 
 		var matrix [][]int64
@@ -35,7 +36,6 @@ func main() {
 			matrix = append(matrix, make([]int64, m))
 		}
 
-		// fmt.Println(matrix)
 		// matrix[1][1] = 1
 		for i = 0; i < n; i++ {
 			for j = 0; j < m; j++ {
@@ -47,7 +47,6 @@ func main() {
 			}
 		}
 
-		// fmt.Println(matrix)
 		if matrix[n-1][m-1] == k {
 			printf("YES\n")
 		} else {

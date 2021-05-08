@@ -1,4 +1,4 @@
-package graph
+package bst
 
 /*
 Question 894: https://leetcode.com/problems/all-possible-full-binary-trees/submissions/

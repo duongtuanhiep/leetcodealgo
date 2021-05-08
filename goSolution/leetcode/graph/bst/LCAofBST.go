@@ -1,4 +1,4 @@
-package graph
+package bst
 
 /**
  * Definition for a binary tree node.
