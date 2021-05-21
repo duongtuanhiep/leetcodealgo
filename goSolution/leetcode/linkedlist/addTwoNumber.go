@@ -7,6 +7,7 @@ Idea:
  - Store a the possible node on an array, returns the index i = 1 of
  that array
 **/
+/*
 func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 	var holder int
 	resArr := []*ListNode{&ListNode{Val: 10, Next: nil}}
@@ -32,7 +33,7 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 	}
 	return nil
 }
-
+*/
 /*
 - Perharps we can create a symbolic initial node since it is guaranteed
 that it will not be zero and below 10, can assign an abitrary value outside
