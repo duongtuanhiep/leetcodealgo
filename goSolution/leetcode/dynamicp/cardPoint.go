@@ -1,4 +1,4 @@
-package cardPoints
+package dynamicp
 
 /*
 Question 1423: https://leetcode.com/problems/maximum-points-you-can-obtain-from-cards/
