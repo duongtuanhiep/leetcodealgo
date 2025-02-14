@@ -1,0 +1,12 @@
+{
+        // Bracket-pair colorization
+        "editor.bracketPairColorization.enabled": false, 
+    
+        // Bracket-pair guides
+        "editor.guides.bracketPairsHorizontal": false,
+        "editor.guides.highlightActiveBracketPair": false,
+    
+        // Indentation guides
+        "editor.guides.indentation": false,
+        "editor.guides.highlightActiveIndentation": false
+}

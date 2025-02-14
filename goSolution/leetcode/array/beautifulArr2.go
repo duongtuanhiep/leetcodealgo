@@ -6,6 +6,7 @@ Question 667: https://leetcode.com/problems/beautiful-arrangement-ii/
 Idea:
 - Maybe inversion has sth to do with it
 
+
 **/
 
 func constructArray(n int, k int) []int {
