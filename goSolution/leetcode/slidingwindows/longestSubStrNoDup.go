@@ -1,4 +1,4 @@
-package twoPointer
+package slidingwindows
 
 /*
 Question 3: https://leetcode.com/problems/longest-substring-without-repeating-characters/
@@ -11,7 +11,8 @@ Idea: optimmized brute force
 Exaustive search: Do linear scan through the array, have a map to count reccurence. On
 each element of outer loop does a reccurence count. Stop if any elements has > 1 occurence.
 Runtime O(N^2), Space O(N)
-**/
+*
+*/
 func lengthOfLongestSubstring(s string) int {
 	var maxStr int
 	for i := 0; i < len(s); i++ {
@@ -49,7 +50,8 @@ Runtime O(N), Space O(N)
 
 TODO: Optimize by instead of using an alternative array to store "last" occurence of
 character we can create a hash map and do this on the fly.
-**/
+*
+*/
 func lengthOfLongestSubstring(s string) int {
 	var lcp []int // Array that store index of last reccurence of a char
 	newestRec := make(map[byte]int)

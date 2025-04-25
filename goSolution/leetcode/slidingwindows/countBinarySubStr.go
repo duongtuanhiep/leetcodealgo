@@ -1,4 +1,4 @@
-package twoPointer
+package slidingwindows
 
 /*
 Question 696: https://leetcode.com/problems/count-binary-substrings/

@@ -1,4 +1,4 @@
-package twoPointer
+package slidingwindows
 
 import "container/heap"
 
