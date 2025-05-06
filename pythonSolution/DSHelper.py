@@ -75,3 +75,7 @@ String Ops:
 - Format strings using .format() or f-strings
 - And more utilities via the string module
 """
+
+"""
+Sorting
+"""
