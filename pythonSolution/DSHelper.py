@@ -79,3 +79,17 @@ String Ops:
 """
 Sorting
 """
+
+
+"""
+Count
+"""
+arr = [1,2,3]
+arr.count(2)
+
+
+if __name__ == "__main__":
+    cases = []
+
+    for c in cases:
+        print()
