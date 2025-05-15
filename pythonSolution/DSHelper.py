@@ -75,3 +75,21 @@ String Ops:
 - Format strings using .format() or f-strings
 - And more utilities via the string module
 """
+
+"""
+Sorting
+"""
+
+
+"""
+Count
+"""
+arr = [1,2,3]
+arr.count(2)
+
+
+if __name__ == "__main__":
+    cases = []
+
+    for c in cases:
+        print()

@@ -4,6 +4,8 @@ Question 2161: https://leetcode.com/problems/partition-array-according-to-given-
 
 Dumb solutions: (3 passes)
 - build 3 arrs for number that is smaller, equal and greater and concatenate them.
+
+Dutch flag Algorithm.
 """
 
 
