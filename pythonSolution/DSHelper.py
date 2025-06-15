@@ -112,7 +112,9 @@ arr = [1, 2, 3, 3, 4, 5, 5, 5, 6, 7]
 numbers = [1, 2, 4, 4, 5]
 x = 4
 
+# Position x1 < x <= x2 - leftmost of equals elem
 left_index = bisect.bisect_left(numbers, x)
+# Position x1 <= x < x2 - rightmost of equals elem
 right_index = bisect.bisect_right(numbers, x)
 
 
@@ -178,3 +180,6 @@ if __name__ == "__main__":
 
     for c in cases:
         print()
+
+# Language LRU cache
+#  @lru_cache(None)  # memoization to avoid recomputation
