@@ -27,6 +27,63 @@ while node:
     node = node.next
 print("None")  # Output: 1 -> 2 -> 3 -> None
 
+
+"""
+Trie
+"""
+
+
+class TrieNode:
+    def __init__(self):
+        self.children = {}
+        self.is_end = False  # Marks end of a complete word
+
+
+class Trie:
+    def __init__(self):
+        self.root = TrieNode()
+
+    def insert(self, word):
+        node = self.root
+        for char in word:
+            if char not in node.children:
+                node.children[char] = TrieNode()
+            node = node.children[char]
+        node.is_end = True
+
+    def search(self, word):
+        node = self.root
+        for char in word:
+            if char not in node.children:
+                return False
+            node = node.children[char]
+        return node.is_end
+
+
+"""
+Fenwick Tree
+"""
+
+
+class FenwickTree:
+    def __init__(self, size):
+        self.tree = [0] * (size + 1)
+
+    def update(self, index, delta):
+        index += 1
+        while index < len(self.tree):
+            self.tree[index] += delta
+            index += index & -index
+
+    def query(self, index) -> int:
+        index += 1
+        res = 0
+        while index > 0:
+            res += self.tree[index]
+            index -= index & -index
+        return res
+
+
 """
 Stack
 """
@@ -58,6 +115,34 @@ graph = defaultdict(list)
 graph = {1: [2, 3], 2: [1, 4], 3: [1], 4: [2]}
 print("Graph:", graph)
 
+"""
+KV Iteration
+"""
+dictionary = dict()
+dictionary["some"] = "thing"
+for k, v in dictionary.items():
+    pass
+
+# min/max function
+someDict = defaultdict(list)
+min(someDict)  # Return the lowest key
+min(someDict, key=someDict.get)  # Lowest value
+
+# OrderedDict
+from collections import OrderedDict
+
+od = OrderedDict()
+od["chris"] = 2
+od["kek"] = 1
+# Iterate "chris" > "kek"
+
+# Get last in ordDict
+last_key = next(reversed(od))
+
+# check for digits
+someStr = "sada1322"
+if any(char.isDigit() for char in someStr):
+    pass
 
 """
 Min Heap
@@ -88,6 +173,7 @@ String Ops:
 - Check string prefixes/suffixes (startswith(), endswith())
 - Format strings using .format() or f-strings
 - And more utilities via the string module
+- can reversed() too
 """
 
 """
@@ -124,55 +210,14 @@ Count
 arr = [1, 2, 3]
 arr.count(2)
 
-"""
-KV Iteration
-"""
-dictionary = dict()
-dictionary["some"] = "thing"
+from collections import Counter
 
-for k, v in dictionary.items():
-    pass
+word = "asdasdcvs"
+cword = Counter(word)  # cword IS A DICT
 
+# Language LRU cache
+#  @lru_cache(None)  # memoization to avoid recomputation
 # nonlocal res  # Declare that 'res' is from the outer scope
-
-
-# Trie
-class TrieNode:
-    def __init__(self):
-        self.children = {}
-        self.is_end = False  # Marks end of a complete word
-
-
-class Trie:
-    def __init__(self):
-        self.root = TrieNode()
-
-    def insert(self, word):
-        node = self.root
-        for char in word:
-            if char not in node.children:
-                node.children[char] = TrieNode()
-            node = node.children[char]
-        node.is_end = True
-
-    def search(self, word):
-        node = self.root
-        for char in word:
-            if char not in node.children:
-                return False
-            node = node.children[char]
-        return node.is_end
-
-
-# min/max function
-someDict = defaultdict(list)
-min(someDict)  # Return the lowest key
-min(someDict, key=someDict.get)  # Lowest value
-
-# check for digits
-someStr = "sada1322"
-if any(char.isDigit() for char in someStr):
-    pass
 
 # Starter func
 if __name__ == "__main__":
@@ -180,6 +225,3 @@ if __name__ == "__main__":
 
     for c in cases:
         print()
-
-# Language LRU cache
-#  @lru_cache(None)  # memoization to avoid recomputation
