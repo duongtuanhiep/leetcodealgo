@@ -189,9 +189,9 @@ wtf = sorted(wtf, key=lambda x: x[0])  # Make new
 Searching
 """
 # bisect_left(a, x)	Find leftmost insertion index for x in a
-# bisect_right(a, x)	Find rightmost insertion index for x in a
+# bisect_right(a, x) Find rightmost insertion index for x in a
 # insort_left(a, x)	Insert x at leftmost position in a
-# insort_right(a, x)	Insert x at rightmost position in a
+# insort_right(a, x) Insert x at rightmost position in a
 import bisect
 
 arr = [1, 2, 3, 3, 4, 5, 5, 5, 6, 7]
@@ -213,7 +213,8 @@ arr.count(2)
 from collections import Counter
 
 word = "asdasdcvs"
-cword = Counter(word)  # cword IS A DICT
+cword = Counter(word)  # cword IS A special dict with missing keys return
+# It is different from default dict though
 
 # Language LRU cache
 #  @lru_cache(None)  # memoization to avoid recomputation

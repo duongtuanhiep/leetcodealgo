@@ -1,3 +1,5 @@
+from collections import deque
+
 """
 
 Leetcode 269: https://leetcode.com/problems/alien-dictionary/description/?envType=company&envId=amazon&favoriteSlug=amazon-six-months
