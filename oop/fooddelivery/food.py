@@ -85,12 +85,24 @@ class OrderTracker:
             return "not found"
 
 
-class PriceCal:
-    def dynamicPrice(originalPrice, courier_availability):
+class PriceCal(ABC):
+    @abstractmethod
+    def dynamicPrice(self) -> int:
         return 123  # Some math based off courier cnt and price
 
 
+class LowCourierPriceCal(PriceCal):
+    def __init__(self, courierCounter: Callable):
+        self.courierCounter = courierCounter
+
+    def dynamicPrice(self):
+        return 1 * 100 / self.courierCounter()
+
+
 class Location:
+    x: int
+    y: int
+
     def __init__(self, x, y):
         self.x = x
         self.y = y
