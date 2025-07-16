@@ -1,120 +1,107 @@
-from typing import Callable
-from copy import deepcopy
+from typing import Protocol, Callable
+from enum import Enum
+
+"""
+Second iteration of pizza:
+- Base, size and toppings, calculate price of pizza.
+
+Twist:
+- Now we have full order (pizza/drinks/etc...).
+- Now we have deals (1 for 1, free drinks with each pizza, free most expensive toppings)
+
+"""
+
+# class PizzaComponent(Protocol):
+#     def get_component_price(self) -> int: ...
+
+
+class PizzaComponent:
+    def __init__(self, name, price, is_complementary):
+        self.name = name
+        self.price = price
+        self.is_complementary = is_complementary
+
+
+class Base(PizzaComponent):
+    def __init__(self, name, price, is_complementary):
+        super().__init__(name, price, is_complementary)
+
+
+class Size(PizzaComponent):
+    def __init__(self, name, price, is_complementary):
+        super().__init__(name, price, is_complementary)
+
+
+class Topping(PizzaComponent):
+    def __init__(self, name, price, is_complementary):
+        super().__init__(name, price, is_complementary)
+
+
+class FoodType(Enum):
+    FOOD_PIZZA = 1
+    FOOD_DRINK = 2
+
+
+class Food(Protocol):
+    def get_price(self) -> int: ...
+    def is_complementary(self) -> bool: ...
+    def get_food_type(self) -> FoodType: ...
+
+
+class Drink:
+    def __init__(self, name, price, complementary):
+        self.name = name
+        self.price = price
+        self.complementary = complementary
+
+    def get_price(self):
+        return self.price
+
+    def is_complementary(self):
+        return self.complementary
+
+    def get_food_type(self):
+        return FoodType.FOOD_DRINK
+
+
+class Pizza:
+    def __init__(self, size, base, toppings):
+        self.size = size
+        self.base = base
+        self.toppings = toppings
+
+    def get_price(self):
+        return (
+            self.size.price
+            + self.base.price
+            + sum([topping.price for topping in self.toppings])
+        )
+
+    def get_food_type(self):
+        return FoodType.FOOD_PIZZA
+
+    def is_complementary(self):
+        return self.complementary
+
+
+class Deal(Protocol):
+    def apply_deal(self, order: "Order"): ...
+
+
+class FreePizza:
+    def __init__(self, free_pizza):
+        self.free_pizza = free_pizza
+
+    def apply_deal(self, order: "Order"):
+        order.items.append()
 
 
 class Order:
-    def __init__(self, items: list["PriceFunc"], deals: list["DealFunc"]):
+    def __init__(self, items: list[Food], applied_deals: list[Deal]):
         self.items = items
-        self.deals = {}
-        for deal in deals:
-            self.deals[deal.__name__] = deal
+        self.deals = applied_deals
 
-    def add(self, *args, **kwargs):
-        pass
-
-    def total_order(self, deals: list["DealFunc"]) -> "Order":
-        finalOrder = self
-        for deal in deals:
-            finalOrder = deal(finalOrder)
-        return finalOrder
-
-
-# order = Order(stuffs)
-# deals = [one_pizza_for_free]
-# order.total_order(deals)
-
-
-PriceFunc = Callable[[], int]
-
-DealFunc = Callable[[Order]]
-
-
-def one_pizza_for_free() -> DealFunc:
-    def add_pizza(order: "Order"):
-        added = False
-        orderLen = len(order.items)
-        for i in range(orderLen):
-            if order.items[i].type() == FOOD_TYPE_PIZZA and not added:
-                newPizze = order.items[i].dup()
-                order.items.append(newPizze)
-                added = True
-
-    return add_pizza
-
-
-def free_drink_each_pizza(drink: "Drink") -> DealFunc:
-    def add_free_drinks(order: "Order"):
-        pizzaCnt = sum(item.type() == FOOD_TYPE_PIZZA for item in order.items)
-        for _ in range(pizzaCnt):
-            order.items.append(deepcopy(drink))
-
-    return add_free_drinks
-
-
-FOOD_TYPE_UNDEFINED = "UNDEFINED"
-FOOD_TYPE_DRINK = "DRINK"
-FOOD_TYPE_PIZZA = "PIZZA"
-
-
-# Food(ABC)
-class Food:
-    def __init__(self, name, price, is_free):
-        self.name = name
-        self.price = price
-        self.is_free = is_free
-
-    # @abstractmethod
-    def price(self) -> int:
-        return self.price
-
-    # @abstractmethod
-    def type(self) -> str:
-        return FOOD_TYPE_UNDEFINED
-
-    # @abstractmethod
-    def as_new(self):
-        return Food(self.name, self.price)
-
-    # @abstractmethod
-    def is_complementary() -> bool:
-        pass
-
-
-class Drink(Food):
-    def __init__(self, name, price):
-        self.name = name
-        self.price = price
-
-    def price(self):
-        return self.price
-
-    def as_new(self) -> "Drink":
-        pass
-
-
-class Pizza(Food):
-    def __init__(self, base: "Base", size: "Size", toppings: list["Topping"]):
-        self.base = base
-        self.size = size
-        self.toppings = toppings
-
-    def price(self) -> int:
-        return self.base.price + self.size.price + self.toppings.price
-
-
-class Base:
-    def __init__(self, price, name):
-        self.price = price
-        self.name = name
-
-
-class Size:
-    def __init__(self, price, name):
-        self.price = price
-        self.name = name
-
-
-class Topping:
-    def __init__(self, price, name):
-        self.price = price
-        self.name = name
+    def original_price(self):
+        return sum(
+            [item.get_price() for item in self.items if not item.is_complementary()]
+        )
