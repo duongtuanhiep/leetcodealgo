@@ -20,11 +20,21 @@ Design for message delivery and read status tracking
 Keep extensibility in mind for future features
 Take your time to design the class structure and relationships. Let me know when you're ready for feedback or want to discuss your approach!
 
+- Define Functional requirement 5-7m: 
+- Define class properties & method 5-7m: 
+
+
 Entities:
 - Chat
+    has []chatmessage
+    add(ChatMessage)
+
 - ChatMessage
+    Has userID, chatcontent
+    userAck()
 - Recipient
 - DeliveryStatus
+
 """
 
 

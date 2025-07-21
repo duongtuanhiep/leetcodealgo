@@ -55,12 +55,6 @@ Cross-joins:
 - Try to co-locate data.
 - Reference table if small.
 
-Hotspot: 
-- Trade off: shard by user -> hot node/ shard by posts -> joins and slower queries
-Use reference table (user)
-- Try to make it so that complex joins are co-located (within a shard/ node)
-- Try to CDC.
-
 ### Scaling
 Try: 
 - Batching & adding buffer queue.
@@ -203,4 +197,10 @@ Scaling difficulty:
 
 # Special technique
 - Circuit breaker
+- Blue green deployments
 
+
+## BQ
+- Columnar storage
+
+## Thanos - Prometheus
